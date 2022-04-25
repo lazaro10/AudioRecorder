@@ -25,6 +25,7 @@
 		4C3FEF4E28145D0A00589EF6 /* AudioRecorderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3FEF4D28145D0A00589EF6 /* AudioRecorderConfigurator.swift */; };
 		4C3FEF512814830C00589EF6 /* AudioFrequencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3FEF502814830C00589EF6 /* AudioFrequencyView.swift */; };
 		4C3FEF532814834B00589EF6 /* AudioFrequencyUnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3FEF522814834B00589EF6 /* AudioFrequencyUnitView.swift */; };
+		4CC7618528162FA5004FA049 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC7618428162FA5004FA049 /* Queue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		4C3FEF4D28145D0A00589EF6 /* AudioRecorderConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderConfigurator.swift; sourceTree = "<group>"; };
 		4C3FEF502814830C00589EF6 /* AudioFrequencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFrequencyView.swift; sourceTree = "<group>"; };
 		4C3FEF522814834B00589EF6 /* AudioFrequencyUnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFrequencyUnitView.swift; sourceTree = "<group>"; };
+		4CC7618428162FA5004FA049 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 		4C39AF08281314500089C3D5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4CC7618328162F98004FA049 /* Queue */,
 				4C39AF1C281369990089C3D5 /* Buttons */,
 				4C39AF15281354CC0089C3D5 /* AudioPermission */,
 				4C39AF09281314790089C3D5 /* AudioRecorder */,
@@ -248,6 +251,14 @@
 				4C3FEF522814834B00589EF6 /* AudioFrequencyUnitView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4CC7618328162F98004FA049 /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				4CC7618428162FA5004FA049 /* Queue.swift */,
+			);
+			path = Queue;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C3FEF512814830C00589EF6 /* AudioFrequencyView.swift in Sources */,
+				4CC7618528162FA5004FA049 /* Queue.swift in Sources */,
 				4C3FEF4A28145CA900589EF6 /* AudioRecorderInteractor.swift in Sources */,
 				4C39AED62812760C0089C3D5 /* AppDelegate.swift in Sources */,
 				4C39AF112813217B0089C3D5 /* AudioRecorderPermissionViewController.swift in Sources */,

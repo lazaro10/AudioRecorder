@@ -3,6 +3,14 @@ protocol AudioRecorderInteractorLogic {
 }
 
 final class AudioRecorderInteractor: AudioRecorderInteractorLogic {
+    private var frequencySizes: Queue<Float> = {
+        var queue = Queue<Float>()
+        for _ in 0...120 {
+            queue.enqueue(0)
+        }
+        return queue
+    }()
+
     private let presenter: AudioRecorderPresentationLogic
     private var audioRecorder: AudioRecorderLogic
     
@@ -25,18 +33,17 @@ extension AudioRecorderInteractor: AudioRecorderDelegate {
     func recorder(whenRecording amplitude: Float) {
         let minimum: Float = 1.0
         let maximum: Float = 50.0
-        let size = amplitude * maximum / 0.1
+        var size = amplitude * maximum / 0.1
 
-        guard size > minimum else {
-            presenter.responseFrequencySize(size: minimum)
-            return
+        size = size > maximum ? maximum : size
+        size = size < minimum ? minimum : size
+
+        frequencySizes.enqueue(size)
+
+        if frequencySizes.count > 120 {
+            frequencySizes.dequeue()
         }
 
-        guard size < maximum else {
-            presenter.responseFrequencySize(size: maximum)
-            return
-        }
-
-        presenter.responseFrequencySize(size: size)
+        presenter.responseFrequencySizes(sizes: frequencySizes)
     }
 }

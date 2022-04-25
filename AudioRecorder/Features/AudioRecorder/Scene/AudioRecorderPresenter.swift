@@ -1,11 +1,11 @@
 protocol AudioRecorderPresentationLogic {
-    func responseFrequencySize(size: Float)
+    func responseFrequencySizes(sizes: Queue<Float>)
 }
 
 final class AudioRecorderPresenter: AudioRecorderPresentationLogic {
     weak var display: AudioRecorderDisplayLogic?
 
-    func responseFrequencySize(size: Float) {
-        display?.displayFrequencySize(size: size)
+    func responseFrequencySizes(sizes: Queue<Float>) {
+        display?.displayFrequencySizes(sizes: sizes)
     }
 }

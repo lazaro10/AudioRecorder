@@ -14,8 +14,8 @@ final class AudioRecorder: AudioRecorderLogic {
         case recording, paused, resume, stopped
     }
 
-    private var engine: AVAudioEngine!
-    private var mixerNode: AVAudioMixerNode!
+    private var engine: AVAudioEngine = AVAudioEngine()
+    private var mixerNode: AVAudioMixerNode = AVAudioMixerNode()
     private let bufferConverter: AudioBufferConverterLogic
     weak var delegate: AudioRecorderDelegate?
 
@@ -46,9 +46,6 @@ final class AudioRecorder: AudioRecorderLogic {
     }
 
     private func setupEngine() {
-        engine = AVAudioEngine()
-        mixerNode = AVAudioMixerNode()
-
         mixerNode.renderingAlgorithm = .HRTF
         mixerNode.volume = 0
         engine.attach(mixerNode)

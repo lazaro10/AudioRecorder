@@ -1,7 +1,7 @@
 import UIKit
 
 protocol AudioRecorderDisplayLogic: AnyObject {
-    func displayFrequencySize(size: Float)
+    func displayFrequencySizes(sizes: Queue<Float>)
 }
 
 final class AudioRecorderViewController: UIViewController {
@@ -66,7 +66,7 @@ final class AudioRecorderViewController: UIViewController {
 }
 
 extension AudioRecorderViewController: AudioRecorderDisplayLogic {
-    func displayFrequencySize(size: Float) {
-        frequencyView.addNewFrequency(size: size)
+    func displayFrequencySizes(sizes: Queue<Float>) {
+        frequencyView.updateFrequency(sizes: sizes)
     }
 }
