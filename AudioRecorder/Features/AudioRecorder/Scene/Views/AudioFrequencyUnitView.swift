@@ -11,24 +11,24 @@ final class AudioFrequencyUnitView: UIView {
 
     private var heightConstraint: NSLayoutConstraint?
 
-    init() {
+    init(size: Float) {
         super.init(frame: .zero)
 
-        setupDashView()
+        setupDashView(size: size)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func updateSize(size: CGFloat) {
+    func updateSize(size: Float) {
         DispatchQueue.main.async { [weak self] in
-            self?.heightConstraint?.constant = size
+            self?.heightConstraint?.constant = CGFloat(size)
             self?.layoutIfNeeded()
         }
     }
 
-    private func setupDashView() {
+    private func setupDashView(size: Float) {
         addSubview(dashView)
 
         let constraints = [
@@ -38,7 +38,7 @@ final class AudioFrequencyUnitView: UIView {
             dashView.centerYAnchor.constraint(equalTo: centerYAnchor),
         ]
 
-        heightConstraint = dashView.heightAnchor.constraint(equalToConstant: 0)
+        heightConstraint = dashView.heightAnchor.constraint(equalToConstant: CGFloat(size))
         heightConstraint?.isActive = true
 
         NSLayoutConstraint.activate(constraints)

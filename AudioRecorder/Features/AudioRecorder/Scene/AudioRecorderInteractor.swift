@@ -3,13 +3,7 @@ protocol AudioRecorderInteractorLogic {
 }
 
 final class AudioRecorderInteractor: AudioRecorderInteractorLogic {
-    private var frequencySizes: Queue<Float> = {
-        var queue = Queue<Float>()
-        for _ in 0...120 {
-            queue.enqueue(0)
-        }
-        return queue
-    }()
+    private var frequencySizes = Queue<Float>()
 
     private let presenter: AudioRecorderPresentationLogic
     private var audioRecorder: AudioRecorderLogic

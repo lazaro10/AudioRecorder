@@ -67,6 +67,6 @@ final class AudioRecorderViewController: UIViewController {
 
 extension AudioRecorderViewController: AudioRecorderDisplayLogic {
     func displayFrequencySizes(sizes: Queue<Float>) {
-        frequencyView.updateFrequency(sizes: sizes)
+        frequencyView.fillFrequencies(sizes: sizes)
     }
 }

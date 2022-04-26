@@ -1,17 +1,8 @@
 import UIKit
 
 final class AudioFrequencyView: UIView {
-    private var frequences: [AudioFrequencyUnitView] = {
-        var list: [AudioFrequencyUnitView] = []
-        for _ in 0...120 {
-            list.append(AudioFrequencyUnitView())
-        }
-
-        return list
-    }()
-
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: frequences)
+        let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
         return stackView
@@ -27,11 +18,19 @@ final class AudioFrequencyView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func updateFrequency(sizes: Queue<Float>) {
+    func fillFrequencies(sizes: Queue<Float>) {
         sizes.enumerated().forEach { (index, size) in
             guard let size = size as? Float else { return }
 
-            frequences[index].updateSize(size: CGFloat(size))
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                if self.stackView.arrangedSubviews.count < sizes.count {
+                    self.stackView.addArrangedSubview(AudioFrequencyUnitView(size: size))
+                } else {
+                    let audioFrequencyUnitView = self.stackView.arrangedSubviews[index] as? AudioFrequencyUnitView
+                    audioFrequencyUnitView?.updateSize(size: size)
+                }
+            }
         }
     }
 
