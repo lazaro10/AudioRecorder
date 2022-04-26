@@ -1,3 +1,6 @@
+import CoreGraphics
+import UIKit
+
 protocol AudioRecorderInteractorLogic {
     func requestRecording()
 }
@@ -34,7 +37,9 @@ extension AudioRecorderInteractor: AudioRecorderDelegate {
 
         frequencySizes.enqueue(size)
 
-        if frequencySizes.count > 120 {
+        let maximumSupportedFrequency = Int(UIScreen.main.bounds.width / 4.0)
+
+        if frequencySizes.count > maximumSupportedFrequency {
             frequencySizes.dequeue()
         }
 
